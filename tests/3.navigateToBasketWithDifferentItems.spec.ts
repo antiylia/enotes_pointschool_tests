@@ -24,9 +24,8 @@ test(`Navigate to basket with 9 different items`, async ({ initStep, baseURL }) 
   await test.step(`Add 8 different items to basket, check basket count is 9`, async () => {
     for (const productToAdd of [existedPrdct, ...productsToAdd]) {
       const nonDiscountItem = await mainPage.getNoteItem(productToAdd);
-      await nonDiscountItem.buyBtn.click({ timeout: 10000 });
+      await nonDiscountItem.buyBtn.click({ timeout: 10000 }); // unstable click, increased timeout 3000 -> 10000
     }
-
     await expect(mainPage.basketItemsCount).toHaveText("9");
   });
 

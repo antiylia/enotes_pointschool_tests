@@ -16,4 +16,8 @@ test("Navigate to empty basket", async ({ initStep, baseURL }) => {
     await basketModal.goToBasketBtn.click();
     await expect(page).toHaveURL(`${baseURL}/basket`);
   });
+
+  await test.step('Basket page loaded, check no error page displayed', async () => {
+    await expect(page.locator('h1')).not.toHaveText('Server Error (#500)');
+  });
 });
