@@ -30,8 +30,7 @@ for (const { itemType, criteriaFn } of dataForTests) {
 
     await test.step(`Add 1 ${itemType} item to basket, check basket count is 1`, async () => {
       const nonDiscountItem = await mainPage.getNoteItem(product);
-      // additional timeout for click, not stable
-      await nonDiscountItem.buyBtn.click({ timeout: 10000 });
+      await nonDiscountItem.buyBtn.click({ timeout: 10000 }); // unstable click, increased timeout 3000 -> 10000
       await expect(mainPage.basketItemsCount).toHaveText("1");
     });
 
