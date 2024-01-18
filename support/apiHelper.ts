@@ -4,7 +4,7 @@ import { baseURL } from "../playwright.config";
 
 export class ApiHelper {
   public apiContext: APIRequestContext;
-  public csrfToken: string;
+  private csrfToken: string;
 
   private async getCsrfToken(): Promise<string> {
     const loginHtml = await this.apiContext.get("/");
